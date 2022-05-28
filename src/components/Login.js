@@ -19,12 +19,12 @@ function Login() {
               Login
             </button>
             <div className="flex justify-between text-sm">
-              <a className="text-blue-600 hover:cursor-pointer hover:underline">
+              <p className="text-blue-600 hover:cursor-pointer hover:underline">
                 Forgot password?
-              </a>
-              <a className="text-blue-600 hover:cursor-pointer hover:underline">
+              </p>
+              <p className="text-blue-600 hover:cursor-pointer hover:underline">
                 Create account
-              </a>
+              </p>
             </div>
           </form>
         </div>

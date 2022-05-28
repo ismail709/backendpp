@@ -32,9 +32,9 @@ function Register() {
             </button>
             <div className="flex justify-center text-sm">
               <p>Already have an account?</p> &#160;
-              <a className="text-blue-600 hover:cursor-pointer hover:underline">
+              <p className="text-blue-600 hover:cursor-pointer hover:underline">
                 Login
-              </a>
+              </p>
             </div>
           </form>
         </div>
