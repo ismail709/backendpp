@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "./commons/Footer";
 import Navbar from "./commons/Navbar";
 import ReviewCard from "./commons/ReviewCard";
@@ -21,12 +22,12 @@ function Home() {
                 the databases, the authentication, security and performance
                 allowing you to focus on your idea.
               </p>
-              <button className="mt-auto bg-primary-300 w-fit px-9 py-4 text-xl font-bold font-body rounded-lg hover:cursor-pointer">
-                Start building FREE
+              <button className="bg-primary-300 w-fit px-9 py-4 text-xl font-bold font-body rounded-lg hover:cursor-pointer">
+                <Link to="/register">Start building FREE</Link>
               </button>
             </div>
             <div>
-              <img src="hero.jpg" width="600" alt="backend servers" />
+              <img src="hero.svg" width="600" alt="backend servers" />
             </div>
           </div>
         </div>
@@ -80,18 +81,18 @@ function Home() {
         <div className="font-body font-bold text-5xl">What People Say</div>
         <div className="flex gap-8">
           <ReviewCard
-            name="Test"
+            name="Alberto Komar"
+            stars={3}
+            text="Nisi ex nostrud enim tempor nulla aute nisi qui."
+          />
+          <ReviewCard
+            name="Jabrils Tradif"
             stars={5}
             text="Nisi ex nostrud enim tempor nulla aute nisi qui."
           />
           <ReviewCard
-            name="Test"
-            stars={5}
-            text="Nisi ex nostrud enim tempor nulla aute nisi qui."
-          />
-          <ReviewCard
-            name="Test"
-            stars={5}
+            name="Nogish Herthik"
+            stars={4}
             text="Nisi ex nostrud enim tempor nulla aute nisi qui."
           />
         </div>
@@ -102,7 +103,7 @@ function Home() {
         </div>
         <div>
           <button className="mt-auto bg-primary-500 text-white w-fit px-9 py-4 text-xl font-bold font-body rounded-lg hover:cursor-pointer">
-            Get Started
+            <Link to="/register">Get Started</Link>
           </button>
         </div>
       </div>

@@ -1,35 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 function ReviewCard({ name, stars, text }) {
-  const [starsEl, setStarsEl] = useState([]);
-  useEffect(() => {
-    if (starsEl.length < 5) {
-      for (let i = 0; i < 5; i++) {
-        console.log(i < stars - 1, starsEl);
-        if (i < stars - 1) {
-          setStarsEl((state) => {
-            state.push(true);
-            return state;
-          });
-          console.log(starsEl);
-        } else {
-          setStarsEl((state) => {
-            state.push(false);
-            return state;
-          });
-        }
-      }
-    }
-    console.log(starsEl);
-  }, [stars, starsEl]);
-
-  return (
-    <div className="flex flex-col gap-2 p-2 border-[1px] border-white hover:border-gray-300 will-change-transform transition-all duration-150 ease-in-out box-border">
-      <h3 className="font-bold text-2xl">{name}</h3>
-      <div className="flex gap-1">
-        {starsEl.map((val) => {
-          console.log(val);
-          return val ? (
+  const starsEl = useMemo(() => {
+    return Array(5)
+      .fill(0)
+      .map((val, index) => {
+        if (index < stars) {
+          return (
             <svg
               width="23"
               height="22"
@@ -42,7 +19,9 @@ function ReviewCard({ name, stars, text }) {
                 fill="#F7D716"
               />
             </svg>
-          ) : (
+          );
+        } else {
+          return (
             <svg
               width="23"
               height="22"
@@ -56,9 +35,15 @@ function ReviewCard({ name, stars, text }) {
               />
             </svg>
           );
-        })}
-      </div>
-      <p className="text-xl leading-tight">{text}</p>
+        }
+      });
+  }, [stars]);
+
+  return (
+    <div className="flex flex-col gap-2 p-2 border-[1px] border-white hover:border-gray-300 will-change-transform transition-all duration-150 ease-in-out box-border">
+      <h3 className="font-bold text-2xl">{name}</h3>
+      <div className="flex gap-1">{starsEl}</div>
+      <p className="text-xl font-body leading-tight">{text}</p>
     </div>
   );
 }
