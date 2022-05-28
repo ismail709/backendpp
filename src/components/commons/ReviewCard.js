@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 function ReviewCard({ name, stars, text }) {
   const starsEl = useMemo(() => {
