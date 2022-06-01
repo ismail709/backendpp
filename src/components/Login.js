@@ -4,7 +4,7 @@ import Input from "./commons/Input";
 function Login() {
   return (
     <div className="bg-gradient-to-b from-primary-700 to-primary-900 min-h-screen flex justify-center items-center">
-      <div className="flex flex-col gap-4 bg-white w-1/3 p-3">
+      <div className="flex flex-col gap-4 bg-white w-full h-screen sm:h-auto sm:w-1/3 p-3 justify-center">
         <h2 className="text-3xl font-body font-bold text-center">Login</h2>
         <div className="flex p-3 w-full">
           <form className="flex flex-col gap-2 w-full">

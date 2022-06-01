@@ -14,6 +14,20 @@ module.exports = {
         logo: ["Maven Pro"],
         body: ["Roboto"],
       },
+      animation: {
+        opennav: "opennav 0.2s linear 1",
+        closenav: "closenav 0.2s linear 1",
+      },
+      keyframes: {
+        opennav: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+        closenav: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
     },
   },
   plugins: [],
