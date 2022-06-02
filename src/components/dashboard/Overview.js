@@ -129,7 +129,9 @@ function StatsChart() {
       <div className="grid grid-cols-4 rounded-r-lg rounded-l-lg overflow-hidden">
         <div
           onClick={() => setview(1)}
-          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${view == 1 && "bg-gradient-to-t"}`}
+          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${
+            view == 1 && "bg-gradient-to-t"
+          }`}
         >
           <p className="font-body">Users</p>
           <p className="text-3xl">12,584</p>
@@ -138,7 +140,9 @@ function StatsChart() {
         </div>
         <div
           onClick={() => setview(2)}
-          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${view == 2 && "bg-gradient-to-t"}`}
+          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${
+            view == 2 && "bg-gradient-to-t"
+          }`}
         >
           <p className="font-body">daily API calls</p>
           <p className="text-3xl">29,013</p>
@@ -147,7 +151,9 @@ function StatsChart() {
         </div>
         <div
           onClick={() => setview(3)}
-          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${view == 3 && "bg-gradient-to-t"}`}
+          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${
+            view == 3 && "bg-gradient-to-t"
+          }`}
         >
           <p className="font-body">Data records</p>
           <p className="text-3xl">6702</p>
@@ -156,7 +162,9 @@ function StatsChart() {
         </div>
         <div
           onClick={() => setview(4)}
-          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${view == 4 && "bg-gradient-to-t"}`}
+          className={`flex flex-col gap-3 px-3 py-7 justify-center items-center bg-gradient-to-b from-gray-200 to-white ${
+            view == 4 && "bg-gradient-to-t"
+          }`}
         >
           <p className="font-body">Files</p>
           <p className="text-3xl">19</p>

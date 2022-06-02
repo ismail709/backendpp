@@ -1,673 +1,172 @@
-import React from "react";
-import { usePagination, useTable } from "react-table";
+import React, { useState } from "react";
+import Table from "../commons/Table";
 
 function Database() {
-  const columns = React.useMemo(
-    () => [
+  const [count, setCount] = useState(1);
+  const [columns, setColumns] = useState([
+    {
+      Header: "First Name",
+      accessor: "first",
+    },
+    {
+      Header: "Last Name",
+      accessor: "last",
+    },
+  ]);
+  const [data, setData] = useState([
+    {
+      first: "Hello",
+      last: "World",
+    },
+    {
+      first: "react-table",
+      last: "rocks",
+    },
+    {
+      first: "whatever",
+      last: "you want",
+    },
+  ]);
+
+  const addColumn = () => {
+    setData((state) => [
+      ...state,
       {
-        Header: "First Name",
-        accessor: "first",
-      },
-      {
-        Header: "Last Name",
-        accessor: "last",
-      },
-    ],
-    []
-  );
-  const data = React.useMemo(
-    () => [
-      {
-        first: "Hello",
-        last: "World",
+        first: "react-table",
+        last: "rocks",
       },
       {
         first: "react-table",
         last: "rocks",
       },
       {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
+        first: "react-table",
+        last: "rocks",
       },
       {
         first: "react-table",
         last: "rocks",
       },
       {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
+        first: "react-table",
+        last: "rocks",
       },
       {
         first: "react-table",
         last: "rocks",
       },
       {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
         first: "react-table",
         last: "rocks",
       },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want",
-      },
-      {
-        first: "Hello",
-        last: "World",
-      },
-      {
-        first: "react-table",
-        last: "rocks",
-      },
-      {
-        first: "whatever",
-        last: "you want 544654 ",
-      },
-    ],
-    []
-  );
+    ]);
+    setCount((count) => count + 1);
+  };
   return (
     <div className="flex flex-col gap-3 p-8 bg-gray-200 flex-grow overflow-scroll">
       <p className="text-4xl font-body font-bold bg-white p-4 rounded-lg shadow-md">
         Data Management
       </p>
-      <div className="font-body flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
+      <div className="font-body flex flex-col justify-between items-center bg-white p-4 rounded-lg shadow-md">
+        <div className="flex justify-between p-3 w-full">
+          <select className="text-3xl font-body font-bold pr-4 outline-none">
+            <option>test</option>
+            <option>test</option>
+            <option>test</option>
+          </select>
+          <div className="flex gap-3 items-center">
+            <button>
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.125 16.875V9H16.875V16.875H9V19.125H16.875V27H19.125V19.125H27V16.875H19.125Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
+            <button>
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.625 3H20.622C20.907 3.00009 21.1814 3.10837 21.3897 3.30296C21.598 3.49755 21.7246 3.76395 21.744 4.04832C21.7635 4.33269 21.6742 4.61384 21.4944 4.83495C21.3145 5.05606 21.0574 5.20065 20.775 5.2395L20.622 5.25H18.75V30.75H20.6175C20.8894 30.75 21.152 30.8485 21.3569 31.0272C21.5618 31.2058 21.695 31.4527 21.732 31.722L21.7425 31.875C21.7425 32.1469 21.644 32.4095 21.4653 32.6144C21.2867 32.8193 21.0398 32.9525 20.7705 32.9895L20.6175 33H14.625C14.34 32.9999 14.0656 32.8916 13.8573 32.697C13.649 32.5024 13.5224 32.2361 13.503 31.9517C13.4835 31.6673 13.5728 31.3862 13.7526 31.1651C13.9325 30.9439 14.1896 30.7994 14.472 30.7605L14.625 30.75H16.5V5.25H14.625C14.3531 5.24999 14.0905 5.15154 13.8856 4.97285C13.6807 4.79416 13.5475 4.54733 13.5105 4.278L13.5 4.125C13.5 3.85314 13.5985 3.59049 13.7772 3.3856C13.9558 3.18072 14.2027 3.04747 14.472 3.0105L14.625 3H20.622H14.625ZM27.369 7.4955C28.6616 7.49669 29.9008 8.01069 30.8148 8.92467C31.7288 9.83865 32.2428 11.0779 32.244 12.3705L32.25 23.6265C32.2509 24.8716 31.7752 26.0698 30.9205 26.9752C30.0659 27.8806 28.8971 28.4246 27.654 28.4955L27.375 28.503H20.2575V26.253H27.462C28.1434 26.2308 28.7894 25.9442 29.2631 25.4539C29.7369 24.9637 30.0011 24.3083 30 23.6265L29.9955 12.369C29.9943 11.6727 29.717 11.0052 29.2243 10.5131C28.7316 10.021 28.0638 9.7444 27.3675 9.744H20.2575V7.494H27.3675L27.369 7.4955ZM15 7.4955V9.7455H7.875C7.17881 9.7455 6.51113 10.0221 6.01884 10.5143C5.52656 11.0066 5.25 11.6743 5.25 12.3705V23.6265C5.25 25.077 6.426 26.2515 7.875 26.2515H14.9925V28.5015H7.875C6.58207 28.5015 5.34209 27.9879 4.42785 27.0736C3.51361 26.1594 3 24.9194 3 23.6265V12.3705C3 11.0776 3.51361 9.83759 4.42785 8.92335C5.34209 8.00911 6.58207 7.4955 7.875 7.4955H15V7.4955Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
+            <button>
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 2.625C19.2452 2.62492 20.4432 3.10133 21.3483 3.95651C22.2535 4.81168 22.797 5.98079 22.8675 7.224L22.875 7.5H30.75C31.035 7.50009 31.3094 7.60837 31.5177 7.80296C31.726 7.99755 31.8526 8.26395 31.872 8.54832C31.8915 8.83269 31.8022 9.11384 31.6224 9.33495C31.4425 9.55606 31.1854 9.70065 30.903 9.7395L30.75 9.75H29.556L27.636 29.28C27.5398 30.2537 27.1007 31.1614 26.397 31.8412C25.6933 32.521 24.7709 32.9285 23.7945 32.991L23.5305 33H12.4695C11.4907 33 10.5438 32.6519 9.79801 32.0179C9.05223 31.384 8.55618 30.5055 8.3985 29.5395L8.364 29.2785L6.4425 9.75H5.25C4.97814 9.74999 4.71549 9.65154 4.5106 9.47285C4.30572 9.29416 4.17247 9.04733 4.1355 8.778L4.125 8.625C4.12501 8.35314 4.22346 8.09049 4.40215 7.8856C4.58084 7.68072 4.82767 7.54747 5.097 7.5105L5.25 7.5H13.125C13.125 6.20707 13.6386 4.96709 14.5529 4.05285C15.4671 3.13861 16.7071 2.625 18 2.625V2.625ZM27.2955 9.75H8.703L10.6035 29.058C10.6456 29.4888 10.8354 29.8918 11.1408 30.1986C11.4462 30.5053 11.8484 30.697 12.279 30.741L12.4695 30.75H23.5305C24.4305 30.75 25.194 30.1125 25.368 29.247L25.398 29.058L27.294 9.75H27.2955ZM20.625 13.875C20.8969 13.875 21.1595 13.9735 21.3644 14.1522C21.5693 14.3308 21.7025 14.5777 21.7395 14.847L21.75 15V25.5C21.7499 25.785 21.6416 26.0594 21.447 26.2677C21.2524 26.476 20.9861 26.6026 20.7017 26.622C20.4173 26.6415 20.1362 26.5522 19.9151 26.3724C19.6939 26.1925 19.5494 25.9354 19.5105 25.653L19.5 25.5V15C19.5 14.7016 19.6185 14.4155 19.8295 14.2045C20.0405 13.9935 20.3266 13.875 20.625 13.875ZM15.375 13.875C15.6469 13.875 15.9095 13.9735 16.1144 14.1522C16.3193 14.3308 16.4525 14.5777 16.4895 14.847L16.5 15V25.5C16.4999 25.785 16.3916 26.0594 16.197 26.2677C16.0024 26.476 15.7361 26.6026 15.4517 26.622C15.1673 26.6415 14.8862 26.5522 14.6651 26.3724C14.4439 26.1925 14.2994 25.9354 14.2605 25.653L14.25 25.5V15C14.25 14.7016 14.3685 14.4155 14.5795 14.2045C14.7905 13.9935 15.0766 13.875 15.375 13.875ZM18 4.875C17.3412 4.87502 16.7065 5.12276 16.2219 5.56902C15.7373 6.01528 15.4382 6.62745 15.384 7.284L15.375 7.5H20.625C20.625 6.80381 20.3484 6.13613 19.8562 5.64384C19.3639 5.15156 18.6962 4.875 18 4.875Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <hr className="border-black h-1 w-full" />
         <Table columns={columns} data={data} />
       </div>
-    </div>
-  );
-}
-
-function Table({ columns, data }) {
-  const tableInstance = useTable({ columns, data }, usePagination);
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    page,
-    prepareRow,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
-  } = tableInstance;
-
-  return (
-    <>
-      // apply the table props
-      <table {...getTableProps()}>
-        <thead>
-          {
-            // Loop over the header rows
-            headerGroups.map((headerGroup) => (
-              // Apply the header row props
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {
-                  // Loop over the headers in each row
-                  headerGroup.headers.map((column) => (
-                    // Apply the header cell props
-                    <th {...column.getHeaderProps()}>
-                      {
-                        // Render the header
-                        column.render("Header")
-                      }
-                    </th>
-                  ))
-                }
-              </tr>
-            ))
-          }
-        </thead>
-        {/* Apply the table body props */}
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {"<<"}
-        </button>{" "}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {"<"}
-        </button>{" "}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {">"}
-        </button>{" "}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {">>"}
-        </button>{" "}
-        <span>
-          Page{" "}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{" "}
-        </span>
-        <span>
-          | Go to page:{" "}
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              gotoPage(page);
-            }}
-            style={{ width: "100px" }}
-          />
-        </span>{" "}
-        <select
-          value={pageSize}
-          onChange={(e) => {
-            setPageSize(Number(e.target.value));
-          }}
-        >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
+      <div className="fixed bottom-10 right-10 flex gap-2">
+        <button className="flex justify-center items-center bg-primary-900 rounded-full p-2">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.125 16.875V9H16.875V16.875H9V19.125H16.875V27H19.125V19.125H27V16.875H19.125Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+        <button className="flex justify-center items-center bg-primary-900 rounded-full p-2">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.9498 4.04999C31.4804 3.58049 30.9231 3.20806 30.3097 2.95397C29.6963 2.69987 29.0388 2.56909 28.3749 2.56909C27.711 2.56909 27.0535 2.69987 26.4402 2.95397C25.8268 3.20806 25.2694 3.58049 24.8 4.04999L5.78813 23.0619C5.22241 23.6276 4.81098 24.3296 4.59627 25.101L2.60727 32.2046C2.56131 32.3692 2.55996 32.5432 2.60335 32.7085C2.64675 32.8739 2.73332 33.0247 2.85421 33.1456C2.9751 33.2665 3.12595 33.3531 3.29131 33.3965C3.45667 33.4399 3.6306 33.4385 3.79527 33.3926L10.8976 31.4036C11.6689 31.1877 12.3716 30.7768 12.938 30.2104L31.9498 11.1986C32.8976 10.2505 33.4301 8.96485 33.4301 7.62428C33.4301 6.28371 32.8976 4.99803 31.9498 4.04999V4.04999ZM26.1641 5.41285C26.7506 4.82651 27.546 4.49718 28.3754 4.4973C29.2047 4.49742 30 4.82699 30.5863 5.41349C31.1727 6 31.502 6.79541 31.5019 7.62473C31.5018 8.45406 31.1722 9.24937 30.5857 9.83571L28.6057 11.8144L24.1841 7.39156L26.1641 5.41285V5.41285ZM22.8213 8.75571L27.2441 13.1786L11.5738 28.8476C11.2419 29.1795 10.8301 29.4204 10.3781 29.547L4.92541 31.0731L6.45155 25.6217C6.57837 25.1698 6.81922 24.758 7.15098 24.426L22.8213 8.75571V8.75571Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+        <button className="flex justify-center items-center bg-primary-900 rounded-full p-2">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 2.625C19.2452 2.62492 20.4432 3.10133 21.3483 3.95651C22.2535 4.81168 22.797 5.98079 22.8675 7.224L22.875 7.5H30.75C31.035 7.50009 31.3094 7.60837 31.5177 7.80296C31.726 7.99755 31.8526 8.26395 31.872 8.54832C31.8915 8.83269 31.8022 9.11384 31.6224 9.33495C31.4425 9.55606 31.1854 9.70065 30.903 9.7395L30.75 9.75H29.556L27.636 29.28C27.5398 30.2537 27.1007 31.1614 26.397 31.8412C25.6933 32.521 24.7709 32.9285 23.7945 32.991L23.5305 33H12.4695C11.4907 33 10.5438 32.6519 9.79801 32.0179C9.05223 31.384 8.55618 30.5055 8.3985 29.5395L8.364 29.2785L6.4425 9.75H5.25C4.97814 9.74999 4.71549 9.65154 4.5106 9.47285C4.30572 9.29416 4.17247 9.04733 4.1355 8.778L4.125 8.625C4.12501 8.35314 4.22346 8.09049 4.40215 7.8856C4.58084 7.68072 4.82767 7.54747 5.097 7.5105L5.25 7.5H13.125C13.125 6.20707 13.6386 4.96709 14.5529 4.05285C15.4671 3.13861 16.7071 2.625 18 2.625V2.625ZM27.2955 9.75H8.703L10.6035 29.058C10.6456 29.4888 10.8354 29.8918 11.1408 30.1986C11.4462 30.5053 11.8484 30.697 12.279 30.741L12.4695 30.75H23.5305C24.4305 30.75 25.194 30.1125 25.368 29.247L25.398 29.058L27.294 9.75H27.2955ZM20.625 13.875C20.8969 13.875 21.1595 13.9735 21.3644 14.1522C21.5693 14.3308 21.7025 14.5777 21.7395 14.847L21.75 15V25.5C21.7499 25.785 21.6416 26.0594 21.447 26.2677C21.2524 26.476 20.9861 26.6026 20.7017 26.622C20.4173 26.6415 20.1362 26.5522 19.9151 26.3724C19.6939 26.1925 19.5494 25.9354 19.5105 25.653L19.5 25.5V15C19.5 14.7016 19.6185 14.4155 19.8295 14.2045C20.0405 13.9935 20.3266 13.875 20.625 13.875ZM15.375 13.875C15.6469 13.875 15.9095 13.9735 16.1144 14.1522C16.3193 14.3308 16.4525 14.5777 16.4895 14.847L16.5 15V25.5C16.4999 25.785 16.3916 26.0594 16.197 26.2677C16.0024 26.476 15.7361 26.6026 15.4517 26.622C15.1673 26.6415 14.8862 26.5522 14.6651 26.3724C14.4439 26.1925 14.2994 25.9354 14.2605 25.653L14.25 25.5V15C14.25 14.7016 14.3685 14.4155 14.5795 14.2045C14.7905 13.9935 15.0766 13.875 15.375 13.875ZM18 4.875C17.3412 4.87502 16.7065 5.12276 16.2219 5.56902C15.7373 6.01528 15.4382 6.62745 15.384 7.284L15.375 7.5H20.625C20.625 6.80381 20.3484 6.13613 19.8562 5.64384C19.3639 5.15156 18.6962 4.875 18 4.875Z"
+              fill="white"
+            />
+          </svg>
+        </button>
       </div>
-    </>
+    </div>
   );
 }
 
